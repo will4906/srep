@@ -10,7 +10,7 @@ from .. import Dataset as Base, Combo, Trial, SingleSessionMixin
 
 TRIALS = list(range(1, 11))
 NUM_TRIAL = len(TRIALS)
-NUM_SEMG_ROW = 16
+NUM_SEMG_ROW = 20
 NUM_SEMG_COL = 8
 FRAMERATE = 1000
 PREPROCESS_KARGS = dict(

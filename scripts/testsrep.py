@@ -12,36 +12,36 @@ from sigr import Context
 one_fold_intra_subject_eval = CV(crossval_type='one-fold-intra-subject', batch_size=1000)
 intra_session_eval = CV(crossval_type='intra-session', batch_size=1000)
 
-print('NinaPro DB1')
-print('===========')
+# print('NinaPro DB1')
+# print('===========')
+#
+# with Context(parallel=True, level='DEBUG'):
+#     acc = one_fold_intra_subject_eval.vote_accuracy_curves(
+#         [Exp(dataset=Dataset.from_name('ninapro-db1'),
+#              dataset_args=dict(preprocess=Preprocess.parse('ninapro-lowpass')),
+#              Mod=dict(num_gesture=52,
+#                       context=[mx.gpu(0)],
+#                       symbol_kargs=dict(dropout=0, num_semg_row=1, num_semg_col=10, num_filter=64),
+#                       params='.cache/srep-ninapro-db1-one-fold-intra-subject-%d/model-0028.params'))],
+#         folds=np.arange(27),
+#         windows=np.arange(1, 501),
+#         balance=True)
+#     acc = acc.mean(axis=(0, 1))
+#     print('Single frame accuracy: %f' % acc[0])
+#     print('15 frames (150 ms) majority voting accuracy: %f' % acc[14])
+#
+# with Context(parallel=True, level='DEBUG'):
+#     acc = one_fold_intra_subject_eval.accuracies(
+#         [Exp(dataset=Dataset.from_name('ninapro-db1'), vote=-1,
+#              dataset_args=dict(preprocess=Preprocess.parse('ninapro-lowpass')),
+#              Mod=dict(num_gesture=52,
+#                       context=[mx.gpu(0)],
+#                       symbol_kargs=dict(dropout=0, num_semg_row=1, num_semg_col=10, num_filter=64),
+#                       params='.cache/srep-ninapro-db1-one-fold-intra-subject-%d/model-0028.params'))],
+#         folds=np.arange(27))
+#     print('Per-trial majority voting accuracy: %f' % acc.mean())
 
-with Context(parallel=True, level='DEBUG'):
-    acc = one_fold_intra_subject_eval.vote_accuracy_curves(
-        [Exp(dataset=Dataset.from_name('ninapro-db1'),
-             dataset_args=dict(preprocess=Preprocess.parse('ninapro-lowpass')),
-             Mod=dict(num_gesture=52,
-                      context=[mx.gpu(0)],
-                      symbol_kargs=dict(dropout=0, num_semg_row=1, num_semg_col=10, num_filter=64),
-                      params='.cache/srep-ninapro-db1-one-fold-intra-subject-%d/model-0028.params'))],
-        folds=np.arange(27),
-        windows=np.arange(1, 501),
-        balance=True)
-    acc = acc.mean(axis=(0, 1))
-    print('Single frame accuracy: %f' % acc[0])
-    print('15 frames (150 ms) majority voting accuracy: %f' % acc[14])
-
-with Context(parallel=True, level='DEBUG'):
-    acc = one_fold_intra_subject_eval.accuracies(
-        [Exp(dataset=Dataset.from_name('ninapro-db1'), vote=-1,
-             dataset_args=dict(preprocess=Preprocess.parse('ninapro-lowpass')),
-             Mod=dict(num_gesture=52,
-                      context=[mx.gpu(0)],
-                      symbol_kargs=dict(dropout=0, num_semg_row=1, num_semg_col=10, num_filter=64),
-                      params='.cache/srep-ninapro-db1-one-fold-intra-subject-%d/model-0028.params'))],
-        folds=np.arange(27))
-    print('Per-trial majority voting accuracy: %f' % acc.mean())
-
-print('')
+# print('')
 print('CapgMyo DB-a')
 print('============')
 
@@ -50,7 +50,7 @@ with Context(parallel=True, level='DEBUG'):
         [Exp(dataset=Dataset.from_name('dba'),
              Mod=dict(num_gesture=8,
                       context=[mx.gpu(0)],
-                      symbol_kargs=dict(dropout=0, num_semg_row=16, num_semg_col=8, num_filter=64),
+                      symbol_kargs=dict(dropout=0, num_semg_row=20, num_semg_col=8, num_filter=64),
                       params='.cache/srep-dba-one-fold-intra-subject-%d/model-0028.params'))],
         folds=np.arange(18),
         windows=np.arange(1, 1001))
@@ -63,7 +63,7 @@ with Context(parallel=True, level='DEBUG'):
         [Exp(dataset=Dataset.from_name('dba'), vote=-1,
              Mod=dict(num_gesture=8,
                       context=[mx.gpu(0)],
-                      symbol_kargs=dict(dropout=0, num_semg_row=16, num_semg_col=8, num_filter=64),
+                      symbol_kargs=dict(dropout=0, num_semg_row=20, num_semg_col=8, num_filter=64),
                       params='.cache/srep-dba-one-fold-intra-subject-%d/model-0028.params'))],
         folds=np.arange(18))
     print('Per-trial majority voting accuracy: %f' % acc.mean())
