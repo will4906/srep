@@ -42,6 +42,8 @@ def add_a_period():
         trial_index = int(mat_name.split('.')[0].split('-')[-1])
         mat_path = os.path.join(data_path, mat_name)
         mat = scipy.io.loadmat(mat_path)
+        print(mat)
+        break
         new_mat = None
         for index, frame in enumerate(mat.get('data')):
             if trial_index % 2 != 0:
@@ -96,11 +98,20 @@ def add_a_period():
                 new_mat = whole
             else:
                 new_mat = np.vstack((new_mat, whole))
+            # if index == 0:
+            #     break
 
-        mat.__setitem__('data', new_mat)
-        save_path = os.path.join('.cache2', 'dba', 'data', mat_name)
-        scipy.io.savemat(save_path, mat)
-        logging.info(save_path)
+        for index, line in enumerate(new_mat):
+            # print(index)
+            if index == 2:
+                print(mat_name)
+                print(line.reshape(20, 8))
+                # break
+        break
+        # mat.__setitem__('data', new_mat)
+        # save_path = os.path.join('.cache2', 'dba', 'data', mat_name)
+        # scipy.io.savemat(save_path, mat)
+        # logging.info(save_path)
 
 if __name__ == '__main__':
     add_a_period()
