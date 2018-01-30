@@ -4,7 +4,7 @@ from keras import Sequential
 from keras.layers import Dense
 from keras.optimizers import SGD
 
-from mkeras.data import load_whole_train_data
+from data import load_whole_train_data
 
 model = Sequential()
 
