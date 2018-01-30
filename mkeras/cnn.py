@@ -83,6 +83,8 @@ if __name__ == '__main__':
 
     train_y = keras.utils.to_categorical(train_y - 1, 8)
     test_y = keras.utils.to_categorical(test_y - 1, 8)
+    train_x = train_x.reshape(train_x.shape[0], 1, 20, 8)
+    test_x = test_x.reshape(test_x.shape[0], 1, 20, 8)
     model, learning_rate_scheduler = get_srep_model()
 
     model.fit(train_x, train_y, batch_size=1000, epochs=28, validation_data=(test_x, test_y),
