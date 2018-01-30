@@ -16,7 +16,7 @@ def load_whole_train_data():
     test_index = [2, 4, 6, 8, 10]
     for mat_name in mat_list:
         gesture_index = int(mat_name.split('.')[0].split('-')[1])
-        trial_index = int(mat_name.split('.')[0].split('-')[1])
+        trial_index = int(mat_name.split('.')[0].split('-')[-1])
         if gesture_index < 9:
             mat_path = os.path.join(data_path, mat_name)
             mat = scipy.io.loadmat(mat_path)
@@ -33,5 +33,5 @@ def load_whole_train_data():
     # print(train_x.shape)
 
 
-# if __name__ == '__main__':
-#     load_whole_train_data()
+if __name__ == '__main__':
+    load_whole_train_data()
