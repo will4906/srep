@@ -8,7 +8,7 @@ from data import load_whole_train_data
 
 model = Sequential()
 
-model.add(Dense(input_dim=128, units=1024, activation='relu'))
+model.add(Dense(input_dim=160, units=1024, activation='relu'))
 model.add(Dense(units=8, activation='softmax'))
 sgd = SGD(lr=0.1, decay=0.0)
 
