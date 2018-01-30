@@ -12,7 +12,7 @@ model.add(Dense(input_dim=160, units=1024, activation='relu'))
 sgd = SGD(lr=0.1, decay=0.0)
 
 model.compile(loss='categorical_crossentropy',
-              optimizer=sgd, metrics=['accuracy'])
+               optimizer=sgd, metrics=['accuracy'])
 train_x, train_y, test_x, test_y = load_whole_train_data()
 
 train_y = keras.utils.to_categorical(train_y - 1, 8)
