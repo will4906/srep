@@ -27,7 +27,7 @@ def get_srep_model():
     learning_rate_scheduler = LearningRateScheduler(learning_rate_func)
     model = Sequential()
 
-    model.add(BatchNormalization(input_shape=[1,16, 8,], momentum=0.9))
+    model.add(BatchNormalization(input_shape=[1,20, 8,], momentum=0.9))
 
     model.add(Conv2D(64, (3, 3), use_bias=False,
                      padding='same', strides=(1, 1)))
