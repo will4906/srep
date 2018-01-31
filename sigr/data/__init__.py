@@ -410,6 +410,7 @@ def get_data(
     logger.debug('Make data iter')
 
     # important, use OrderedDict to ensure label order
+    print('data is', OrderedDict([('data', data)]))
     data = Data(
         data=OrderedDict([('data', data)]),
         label=OrderedDict(label),
