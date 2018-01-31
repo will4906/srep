@@ -10,13 +10,13 @@ from keras.optimizers import SGD, Adam
 from util import load_single_train_data
 
 
-# def learning_rate_func(index):
-#     if index >= 16 and index < 24:
-#         return 0.01
-#     elif index >= 24:
-#         return 0.001
-#     else:
-#         return 0.1
+def learning_rate_func(index):
+    if index >= 16 and index < 24:
+        return 0.01
+    elif index >= 24:
+        return 0.001
+    else:
+        return 0.1
 
 
 learning_rate_scheduler = LearningRateScheduler(learning_rate_func)
