@@ -7,7 +7,7 @@ from keras.layers import Dense, Convolution2D, Flatten, Convolution1D, BatchNorm
     LocallyConnected1D, Dropout
 from keras.optimizers import SGD, Adam
 
-from util import load_single_train_data
+from util import load_single_train_data, load_whole_train_data
 
 
 def learning_rate_func(index):
@@ -69,10 +69,11 @@ sgd = SGD(lr=0.1, decay=0.0)
 
 model.compile(loss=keras.losses.categorical_crossentropy,
                optimizer=sgd, metrics=['accuracy'])
-train_x, train_y, test_x, test_y = load_single_train_data('.cache2/dba/data', 5)
+train_x, train_y, test_x, test_y = load_whole_train_data('.cache2/dba/data')
 train_x = train_x.reshape(train_x.shape[0], 16, 8)
 test_x = test_x.reshape(train_x.shape[0], 16, 8)
 train_y = keras.utils.to_categorical(train_y - 1, 8)
 test_y = keras.utils.to_categorical(test_y - 1, 8)
 
 model.fit(train_x, train_y, batch_size=1000, validation_data=(test_x, test_y), epochs=100)
+model.save('srep_all.h5')

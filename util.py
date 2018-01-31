@@ -34,11 +34,26 @@ def load_single_train_data(base_path, subject_id):
     return np.asarray(train_x), np.asarray(train_y), np.asarray(test_x), np.asarray(test_y)
 
 
-# def load_whole_train_data(base_path):
-#     train_x = []
-#     train_y = []
-#     test_x = []
-#     test_y = []
-#     mat_list = os.listdir(base_path)
-#     for mat_name in mat_list:
-#         if mat_name.split('.')[-1] == 'mat'
+def load_whole_train_data(base_path):
+    train_x = []
+    train_y = []
+    test_x = []
+    test_y = []
+    mat_list = os.listdir(base_path)
+    for mat_name in mat_list:
+        mat_split = mat_name.split('.')
+        if mat_split[-1] == 'mat':
+            if int(mat_split[0].split('-')[1]) < 9:
+                if int(mat_split[0].split('-')[-1]) % 2 == 1:
+                    mat_file = scipy.io.loadmat(base_path + os.sep + mat_name)
+                    for frame in mat_file.get('data'):
+                        train_x.append(frame)
+                        train_y.append(
+                            mat_file.get('gesture')[0][0])
+                else:
+                    mat_file = scipy.io.loadmat(base_path + os.sep + mat_name)
+                    for frame in mat_file.get('data'):
+                        test_x.append(frame)
+                        test_y.append(mat_file.get('gesture')[0][0])
+
+    return np.asarray(train_x), np.asarray(train_y), np.asarray(test_x), np.asarray(test_y)
