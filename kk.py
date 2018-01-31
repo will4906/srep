@@ -25,12 +25,12 @@ model = Sequential()
 
 # 1
 model.add(BatchNormalization(input_shape=[16, 8], momentum=0.9))
-model.add(Convolution1D(filters=64, kernel_size=3))
+model.add(Convolution1D(filters=64, kernel_size=3, padding='same'))
 model.add(BatchNormalization(momentum=0.9))
 model.add(Activation('relu'))
 
 # 2
-model.add(Convolution1D(filters=64, kernel_size=3))
+model.add(Convolution1D(filters=64, kernel_size=3, padding='same'))
 model.add(BatchNormalization(momentum=0.9))
 model.add(Activation('relu'))
 
@@ -69,7 +69,7 @@ sgd = SGD(lr=0.1, decay=0.0)
 
 model.compile(loss=keras.losses.categorical_crossentropy,
                optimizer=sgd, metrics=['accuracy'])
-train_x, train_y, test_x, test_y = load_whole_train_data('.cache2/dba/data')
+train_x, train_y, test_x, test_y = load_single_train_data('.cache/dba/data', 5)
 train_x = train_x.reshape(train_x.shape[0], 16, 8)
 test_x = test_x.reshape(train_x.shape[0], 16, 8)
 train_y = keras.utils.to_categorical(train_y - 1, 8)
