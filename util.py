@@ -34,5 +34,11 @@ def load_single_train_data(base_path, subject_id):
     return np.asarray(train_x), np.asarray(train_y), np.asarray(test_x), np.asarray(test_y)
 
 
-def load_whole_train_data(base_path):
-    pass
+# def load_whole_train_data(base_path):
+#     train_x = []
+#     train_y = []
+#     test_x = []
+#     test_y = []
+#     mat_list = os.listdir(base_path)
+#     for mat_name in mat_list:
+#         if mat_name.split('.')[-1] == 'mat'
