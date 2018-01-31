@@ -57,7 +57,7 @@ sgd = SGD(lr=0.1, decay=0.0)
 
 model.compile(loss=keras.losses.categorical_crossentropy,
                optimizer=sgd, metrics=['accuracy'])
-train_x, train_y, test_x, test_y = load_single_train_data('.cache/dba/data', 5)
+train_x, train_y, test_x, test_y = load_single_train_data('.cache2/dba/data', 5)
 train_x = train_x.reshape(train_x.shape[0], 16, 8)
 test_x = test_x.reshape(train_x.shape[0], 16, 8)
 train_y = keras.utils.to_categorical(train_y - 1, 8)
