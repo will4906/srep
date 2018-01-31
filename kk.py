@@ -2,6 +2,7 @@ import keras
 import numpy as np
 
 from keras import Sequential
+from keras.callbacks import LearningRateScheduler
 from keras.layers import Dense, Convolution2D, Flatten, Convolution1D, BatchNormalization, Activation, \
     LocallyConnected1D, Dropout
 from keras.optimizers import SGD, Adam
