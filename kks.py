@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     model = load_model('srep_all.h5')
 
-    train_x, train_y, test_x, test_y = load_single_train_data('.cache/dba/data', int(sys.argv[1]))
+    train_x, train_y, test_x, test_y = load_single_train_data('.cache2/dba/data', int(sys.argv[1]))
     train_x = train_x.reshape(train_x.shape[0], 16, 8)
     test_x = test_x.reshape(train_x.shape[0], 16, 8)
     train_y = keras.utils.to_categorical(train_y - 1, 8)
