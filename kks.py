@@ -23,5 +23,5 @@ if __name__ == '__main__':
         train_y = keras.utils.to_categorical(train_y - 1, 8)
         test_y = keras.utils.to_categorical(test_y - 1, 8)
 
-        model.fit(train_x, train_y, batch_size=1000, validation_data=(test_x, test_y), epochs=100)
+        model.fit(train_x, train_y, batch_size=1000, validation_data=(test_x, test_y), epochs=55)
         model.save('save_single' + os.sep + 'srep_' + sys.argv[1] + '.h5')
