@@ -32,3 +32,7 @@ def load_single_train_data(base_path, subject_id):
                     test_x.append(frame)
                     test_y.append(mat_file.get('gesture')[0][0])
     return np.asarray(train_x), np.asarray(train_y), np.asarray(test_x), np.asarray(test_y)
+
+
+def load_whole_train_data(base_path):
+    pass
