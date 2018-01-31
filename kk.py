@@ -10,13 +10,13 @@ from keras.optimizers import SGD, Adam
 from util import load_single_train_data
 
 
-def learning_rate_func(index):
-    if index >= 16 and index < 24:
-        return 0.01
-    elif index >= 24:
-        return 0.001
-    else:
-        return 0.1
+# def learning_rate_func(index):
+#     if index >= 16 and index < 24:
+#         return 0.01
+#     elif index >= 24:
+#         return 0.001
+#     else:
+#         return 0.1
 
 
 learning_rate_scheduler = LearningRateScheduler(learning_rate_func)
@@ -75,4 +75,4 @@ test_x = test_x.reshape(train_x.shape[0], 16, 8)
 train_y = keras.utils.to_categorical(train_y - 1, 8)
 test_y = keras.utils.to_categorical(test_y - 1, 8)
 
-model.fit(train_x, train_y, batch_size=1000, validation_data=(test_x, test_y), epochs=28, callbacks=[learning_rate_scheduler])
+model.fit(train_x, train_y, batch_size=1000, validation_data=(test_x, test_y), epochs=28)
