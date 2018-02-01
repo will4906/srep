@@ -7,7 +7,7 @@ from keras.layers import Dense, Convolution2D, Flatten, Convolution1D, BatchNorm
     LocallyConnected1D, Dropout
 from keras.optimizers import SGD, Adam
 
-from util import load_single_train_data, load_whole_train_data
+from util import *
 
 
 def learning_rate_func(index):
