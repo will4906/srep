@@ -66,6 +66,7 @@ def load_17_train_data(base_path):
     test_y = []
     subject_list = os.listdir(base_path)
     for subject_name in subject_list:
+        print(subject_name)
         if os.path.isdir(subject_name):
             if int(subject_name) < 18:
                 mat_list = os.listdir(base_path)
