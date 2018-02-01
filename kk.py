@@ -69,11 +69,11 @@ sgd = SGD(lr=0.1, decay=0.0)
 
 model.compile(loss=keras.losses.categorical_crossentropy,
                optimizer=sgd, metrics=['accuracy'])
-train_x, train_y, test_x, test_y = load_single_train_data('.cache/dba/data', 5)
+train_x, train_y, test_x, test_y = load_17_train_data('.cache2/dba/data')
 train_x = train_x.reshape(train_x.shape[0], 16, 8)
 test_x = test_x.reshape(train_x.shape[0], 16, 8)
 train_y = keras.utils.to_categorical(train_y - 1, 8)
 test_y = keras.utils.to_categorical(test_y - 1, 8)
 
-model.fit(train_x, train_y, batch_size=1000, validation_data=(test_x, test_y), epochs=100)
-model.save('srep_all.h5')
+model.fit(train_x, train_y, batch_size=1000, validation_data=(test_x, test_y), epochs=50)
+model.save('guabeishi.h5')
