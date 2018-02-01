@@ -72,8 +72,8 @@ def load_17_train_data(base_path):
                 for mat_name in mat_list:
                     mat_split = mat_name.split('.')
                     if mat_split[-1] == 'mat':
+                        print('in here')
                         if int(mat_split[0].split('-')[1]) < 9:
-                            print('in here')
                             mat_file = scipy.io.loadmat(base_path + os.sep + mat_name)
                             for frame in mat_file.get('data'):
                                 train_x.append(frame)
