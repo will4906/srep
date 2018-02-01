@@ -68,11 +68,10 @@ def load_17_train_data(base_path):
     for subject_name in subject_list:
         if os.path.isdir(base_path + os.sep + subject_name):
             if int(subject_name) < 18:
-                mat_list = os.listdir(base_path)
+                mat_list = os.listdir(base_path + os.sep + subject_name)
                 for mat_name in mat_list:
                     mat_split = mat_name.split('.')
                     if mat_split[-1] == 'mat':
-                        print('in here')
                         if int(mat_split[0].split('-')[1]) < 9:
                             mat_file = scipy.io.loadmat(base_path + os.sep + mat_name)
                             for frame in mat_file.get('data'):
@@ -80,7 +79,7 @@ def load_17_train_data(base_path):
                                 train_y.append(
                                     mat_file.get('gesture')[0][0])
             else:
-                mat_list = os.listdir(base_path)
+                mat_list = os.listdir(base_path + os.sep + subject_name)
                 for mat_name in mat_list:
                     mat_split = mat_name.split('.')
                     if mat_split[-1] == 'mat':
