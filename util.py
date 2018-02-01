@@ -73,7 +73,7 @@ def load_17_train_data(base_path):
                     mat_split = mat_name.split('.')
                     if mat_split[-1] == 'mat':
                         if int(mat_split[0].split('-')[1]) < 9:
-                            mat_file = scipy.io.loadmat(base_path + os.sep + mat_name)
+                            mat_file = scipy.io.loadmat(base_path + os.sep + subject_name + os.sep + mat_name)
                             for frame in mat_file.get('data'):
                                 train_x.append(frame)
                                 train_y.append(
@@ -84,7 +84,7 @@ def load_17_train_data(base_path):
                     mat_split = mat_name.split('.')
                     if mat_split[-1] == 'mat':
                         if int(mat_split[0].split('-')[1]) < 9:
-                            mat_file = scipy.io.loadmat(base_path + os.sep + mat_name)
+                            mat_file = scipy.io.loadmat(base_path + os.sep + subject_name + os.sep + mat_name)
                             for frame in mat_file.get('data'):
                                 test_x.append(frame)
                                 test_y.append(
